@@ -1,0 +1,12 @@
+com\ssm\zshop\service\RoleService.class
+com\ssm\zshop\vo\SysuserVo.class
+com\ssm\zshop\service\impl\CustomerServiceImpl.class
+com\ssm\zshop\service\impl\ProductServiceImpl.class
+com\ssm\zshop\service\impl\ProductTypeServiceImpl.class
+com\ssm\zshop\service\CustomerService.class
+com\ssm\zshop\service\impl\RoleServiceImpl.class
+com\ssm\zshop\service\ProductService.class
+com\ssm\zshop\service\ProductTypeService.class
+com\ssm\zshop\service\SysuserService.class
+com\ssm\zshop\service\impl\SysuserServiceImpl.class
+com\ssm\zshop\dto\ProductDto.class

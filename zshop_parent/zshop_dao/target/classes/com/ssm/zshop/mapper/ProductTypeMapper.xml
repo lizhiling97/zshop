@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.zshop.dao.ProductTypeDao" >
+    <insert id="insert">
+        insert into t_product_type(name,status)
+        values(#{name},#{status})
+    </insert>
+    <update id="updateName">
+        update t_product_type
+        set name=#{name} where id=#{id}
+    </update>
+    <update id="updateStatus">
+        update t_product_type
+        set status=#{status} where id=#{id}
+    </update>
+    <delete id="delete">
+        delete from t_product_type
+        where id=#{id}
+    </delete>
+    <select id="findAll" resultType="com.ssm.zshop.entity.ProductType">
+        select id,name,status
+        from t_product_type
+    </select>
+    <select id="selectById" resultType="com.ssm.zshop.entity.ProductType">
+        select id,name,status
+        from  t_product_type
+        where id=#{id}
+    </select>
+    <select id="selectByName" resultType="com.ssm.zshop.entity.ProductType">
+         select id,name,status
+         from  t_product_type
+         where name=#{name}
+    </select>
+    <select id="findByStatus" resultType="com.ssm.zshop.entity.ProductType">
+         select id,name,status
+         from  t_product_type
+         where status=#{status}
+    </select>
+</mapper>

@@ -1,0 +1,7 @@
+com\ssm\zshop\dao\CustomerDao.class
+com\ssm\zshop\dao\RoleDao.class
+com\ssm\zshop\param\SysuserParam.class
+com\ssm\zshop\dao\ProductTypeDao.class
+com\ssm\zshop\dao\ProductDao.class
+com\ssm\zshop\param\ProductParam.class
+com\ssm\zshop\dao\SysuserDao.class

@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="zshop_front_wev:war exploded">
+    <output-path>$PROJECT_DIR$/zshop_parent/zshop_front_wev/target/zshop_front_wev</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>zshop_front_wev</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="zshop_front_web" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/zshop_parent/zshop_front_wev/target/zshop_front_wev/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="zshop_front_web/web/Web" />
+    </root>
+  </artifact>
+</component>

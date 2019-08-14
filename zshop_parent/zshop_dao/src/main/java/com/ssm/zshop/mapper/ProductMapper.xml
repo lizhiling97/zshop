@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.zshop.dao.ProductDao" >
+    
+    <resultMap id="productMap" type="Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="info" column="info"/>
+        <result property="image" column="image"/>
+        <association property="productType" javaType="ProductType" column="product_type_id">
+            <id property="id" column="product_type_id"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="productMap2" type="Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="info" column="info"/>
+        <result property="image" column="image"/>
+        <association property="productType" javaType="ProductType" column="product_type_id">
+            <id property="id" column="pt.id"/>
+            <result property="name" column="pt.name"/>
+            <result property="status" column="status"/>
+        </association>
+    </resultMap>
+    
+    <sql id="productColumn">
+        id,
+        name,
+        price,
+        info,
+        image,
+        product_type_id
+    </sql>
+
+    <insert id="insert" parameterType="Product">
+        insert into t_product
+            (name, price, info, image, product_type_id)
+        values
+            (#{name},#{price},#{info},#{image},#{productType.id})
+    </insert>
+
+    <select id="selectByName" resultMap="productMap">
+        select <include refid="productColumn"/>
+        from t_product
+        where name = #{name}
+    </select>
+
+    <select id="selectParam" parameterType="com.ssm.zshop.param.ProductParam" resultMap="productMap">
+        select <include refid="productColumn"/>
+        from t_product
+        <where>
+            <if test="name!=null and name != ''">
+                and name like concat(concat("%",#{name}),"%")
+            </if>
+            <if test="maxPrice != null and minPrice != null">
+                and price between #{minPrice} and #{maxPrice}
+            </if>
+            <if test="minPrice != null">
+                and price &gt;= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                and price &lt;= #{maxPrice}
+            </if>
+            <if test="productTypeId != null and productTypeId != ''">
+                and product_type_id=#{productTypeId}
+            </if>
+        </where>
+    </select>
+
+    <select id="findAll" resultMap="productMap2">
+        select
+            p.id,p.name,p.price,p.info,p.product_type_id,pt.id 'pt.id',pt.name 'pt.name',pt.status
+        from t_product p
+            left join t_product_type pt
+            on p.product_type_id = pt.id
+    </select>
+
+    <select id="findById" resultMap="productMap">
+        select <include refid="productColumn"/>
+        from t_product
+        where id=#{id}
+    </select>
+
+
+    <update id="update" parameterType="Product">
+        update t_product
+        set name=#{name},
+            price=#{price},
+            info=#{info},
+            image=#{image},
+            product_type_id=#{productType.id}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from t_product where id = #{id}
+    </delete>
+
+    <delete id="deleteByName">
+        delete from t_product where name = #{name}
+    </delete>
+
+</mapper>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zshop_front_wev:war">
+    <output-path>$PROJECT_DIR$/zshop_parent/zshop_front_wev/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>zshop_front_wev</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="zshop_front_wev.war">
+      <element id="artifact" artifact-name="zshop_front_wev:war exploded" />
+    </root>
+  </artifact>
+</component>
